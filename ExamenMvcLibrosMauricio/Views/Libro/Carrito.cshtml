@@ -1,0 +1,49 @@
+﻿@model List<Libro>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Libro
+            </th>
+            <th>
+                Portada
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Titulo
+                    </td>
+                    <td>
+                        <img src="~/images/@item.Portada" class="rounded" style="width:10rem;height:15rem;" />
+                    </td>
+                    <td>
+                        <a asp-controller="Libro" asp-action="Detalles" asp-route-idlibro="@item.IdLibro" class="btn btn-primary">Detalles</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Libro" asp-action="Quitar" asp-route-idlibro="@item.IdLibro" class="btn btn-danger">Quitar</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">Sin libros</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model != null)
+{
+
+    <a asp-controller="Libro" asp-action="FinalizarCompra" class="btn btn-primary">Finalizar compra</a>
+}

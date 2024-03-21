@@ -1,0 +1,42 @@
+﻿@model ExamenMvcLibrosMauricio.Models.Usuario
+
+@{
+    string nombre = Context.User.FindFirst(ClaimTypes.Name).Value;
+    string apellidos = Context.User.FindFirst(ClaimTypes.Surname).Value;
+    string email = Context.User.FindFirst(ClaimTypes.Email).Value;
+    string foto = Context.User.FindFirst(ClaimTypes.UserData).Value;
+}
+
+<h1>UsuarioPerfil</h1>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+           Nombre
+        </dt>
+        <dd class = "col-sm-10">
+            @nombre
+        </dd>
+        <dt class = "col-sm-2">
+           Apellidos
+        </dt>
+        <dd class = "col-sm-10">
+            @apellidos
+        </dd>
+        <dt class = "col-sm-2">
+           Email
+        </dt>
+        <dd class = "col-sm-10">
+            @email
+        </dd>
+        <dt class = "col-sm-2">
+           Foto
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/images/@foto" class="rounded" style="width:10rem;height:15rem;" />
+            
+        </dd>
+    </dl>
+</div>

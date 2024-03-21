@@ -1,0 +1,69 @@
+﻿@model List<PedidoView>
+
+<h1 class="text-primary">Pedidos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Titulo
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                Portada
+            </th>
+            <th>
+                Fecha Pedido
+            </th>
+            <th>
+                Total pedido
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count != 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Nombre
+                    </td>
+                    <td>
+                        @item.Apellidos
+                    </td>
+                    <td>
+                        @item.Titulo
+                    </td>
+                    <td>
+                        @item.Precio
+                    </td>
+                    <td>
+                        <img src="~/images/@item.Portada" class="rounded" style="width:10rem;height:15rem;" />
+                    </td>
+                    <td>
+                        @item.Fecha
+                    </td>
+                    <td>
+                        @item.PrecioFinal
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7">Sin pedidos</td>
+            </tr>
+        }
+    </tbody>
+</table>
